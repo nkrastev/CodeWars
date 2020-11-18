@@ -1,0 +1,27 @@
+using System;
+
+namespace N_th_Power
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int[] array = new int[] { 1, 2, 3, 4, 5 };
+            Console.WriteLine(Index(array, n));
+        }
+        public static double Index(int[] array, int n)
+        {
+            double result = 0;
+            if (n >= array.Length || n<0)
+            {
+                result = -1;
+            }
+            else
+            {
+                result = Math.Pow(array[n], n);
+            }
+            return result;
+        }
+    }
+}
