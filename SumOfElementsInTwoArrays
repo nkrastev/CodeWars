@@ -1,0 +1,17 @@
+using System;
+using System.Linq;
+
+namespace SumOfElementsInTwoArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr1 = new int[] { 1, 2, 3 };
+            int[] arr2 = new int[] { 2, 2, 0 };
+
+            int sum = arr1.Sum() + arr2.Sum();
+            Console.WriteLine(sum);
+        }
+    }
+}
