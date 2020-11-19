@@ -1,0 +1,32 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace String_doubles
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine(Doubles("abbbzzbzza"));
+        }
+
+        public static string Doubles(string str)
+        {            
+            int i = 0;
+            while (i<str.Length-1)
+            {
+                if (str[i] == str[i + 1])
+                {
+                    str = str.Remove(i, 2);
+                    i = 0;
+                }
+                else
+                {
+                    i++;
+                }
+                
+            }        
+            return str;
+        }
+    }
+}
