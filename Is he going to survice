@@ -1,0 +1,10 @@
+class Kata
+{
+    public static bool Hero(int bullets, int dragons)
+    {
+        //Do Some Magic...
+      if(dragons*2.0<=bullets)
+        {return true;}
+      else {return false;}
+    }
+}
