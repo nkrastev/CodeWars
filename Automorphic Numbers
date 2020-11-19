@@ -1,0 +1,20 @@
+class Kata
+{
+      public static string Automorphic(int n)
+      {
+          int squareOfN = n * n;
+            int digitsOfN = n.ToString().Length;
+            //get last digitsOfN digits of square
+            int indexToStart = squareOfN.ToString().Length - digitsOfN;
+            string lastNdigitsOfSquare = squareOfN.ToString().Substring(indexToStart, squareOfN.ToString().Length - indexToStart);
+
+            if (lastNdigitsOfSquare==n.ToString())
+            {
+                return "Automorphic";
+            }
+            else
+            {
+                return "Not!!";
+            }
+      }
+}
