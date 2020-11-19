@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+
+public static class Kata
+{
+  public static int[] ArrayLeaders(int[] numbers)
+  {
+    List<int> leaders = new List<int>();
+
+            //find all leaders
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int sumOfAllNextElements = 0;
+                for (int j = i+1; j < numbers.Length; j++)
+                {
+                    sumOfAllNextElements += numbers[j];
+                }
+                if (numbers[i]>sumOfAllNextElements)
+                {
+                    leaders.Add(numbers[i]);
+                }
+            }
+            
+            return leaders.ToArray();
+  }
+}
