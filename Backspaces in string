@@ -1,0 +1,35 @@
+using System;
+
+namespace Backspaces_in_string
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine(CleanString("gfh#jds###d#dsd####dasdaskhj###dhkjs####df##s##d##"));
+            
+        }
+
+        public static string CleanString(string s)
+        {
+            while (s.Contains("#"))
+            {
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i]=='#' && i>0)
+                    {
+                        s=s.Remove(i-1, 2);
+                        break;
+                    }
+                }
+            }
+            return s;
+        
+        }
+
+        //public static string CleanString(string s)
+        //{
+        //    return System.Text.RegularExpressions.Regex.Replace(s, "((?<c>[^#])|(?<-c>#))*(?(c)(?!))#*", "");
+        //}
+    }
+}
