@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace Error_correction_1_Hamming_Code
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(encode("hey"));
+            Console.WriteLine(decode("100111111000111001000010000111111000000111001111000111110110111000010111"));
+        }
+
+        public static string encode(string text)
+        {
+           
+            StringBuilder sb = new StringBuilder();
+            int[] asciiArray = new int[text.Length];
+            //text to ascii
+            for (int i = 0; i < text.Length; i++)
+            {
+                asciiArray[i]=(int)text[i];               
+            }
+            //ascii to binary
+            string[] binaryArray = new string[text.Length];
+            for (int i = 0; i < asciiArray.Length; i++)
+            {
+                sb.Append(Convert.ToString(asciiArray[i], 2).PadLeft(8, '0'));                              
+            }
+            //convert back to string & tripple elements and new SB
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < sb.Length; i++)
+            {
+                result.Append(sb[i]);
+                result.Append(sb[i]);
+                result.Append(sb[i]);
+            }
+            return result.ToString();
+        }
+        public static string decode(string bits)
+        {
+            //separate input on groups of 3 elements
+            List<string> groups = (from Match m in Regex.Matches(bits, @"\d{1,3}") select m.Value).ToList();
+            //get only 1 element of each group
+            StringBuilder binary = new StringBuilder();
+
+            for (int i = 0; i < groups.Count; i++)
+            {
+                binary.Append(groups[i][0]);
+            }
+            
+            string s = binary.ToString();
+            
+            string result = "";
+            while (s.Length > 0)
+            {
+                var first8 = s.Substring(0, 8);
+                s = s.Substring(8);
+                
+                var number = Convert.ToInt32(first8, 2);
+                
+                result += (char)number;
+            }
+            return result;
+        }
+    }
+}
