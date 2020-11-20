@@ -1,0 +1,34 @@
+using System;
+
+namespace Going_to_the_cinema
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine(Movie(100, 10, 0.95));
+        }
+        public static int Movie(int card, int ticket, double perc)
+        {
+            // your code
+            int timesAtCinema = 0;
+            double systemA = 0;
+            double systemB = card;
+            
+            while (systemA<systemB)
+            {
+                timesAtCinema++;
+                systemA = ticket * timesAtCinema;
+                systemB = card;
+                for (int i = 0; i < timesAtCinema; i++)
+                {
+                    systemB+=ticket* Math.Pow(perc, i);
+                }
+               
+                
+            }
+            
+            return timesAtCinema-1;
+        }
+    }
+}
