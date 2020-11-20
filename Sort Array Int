@@ -1,0 +1,27 @@
+using System;
+
+namespace Sort_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[] {};
+            SortNumbers(arr);
+            Console.WriteLine(String.Join(" ",arr));
+        }
+        public static int[] SortNumbers(int[]? nums)
+        {
+            if (nums!=null)
+            {
+                Array.Sort(nums);
+                return nums;
+            }
+            else
+            {
+                return new int[] { };
+            }
+            
+        }
+    }
+}
