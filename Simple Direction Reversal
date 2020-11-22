@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Simple_directions_reversal
+{
+    class Program
+    {
+        static void Main()
+        {
+            string[] arr= new string[] { "Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D" };
+            //                          ['Begin on Road D', 'Right on Road C', 'Left on Road B', 'Left on Road A']
+           
+            Console.WriteLine(String.Join(", ",solve(arr)));
+        }
+
+        public static string[] solve(string[] arr)
+        {
+            string[] result = new string[arr.Length];
+            List<string> directions = new List<string>();
+            List<string> places = new List<string>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                string[] tempArray = arr[i].Split(" on ").ToArray();
+                directions.Add(tempArray[0]);
+                //places.Add(tempArray[1]);
+            }
+            result[0] = "Begin on ";
+            int k = 1;
+            for (int i = directions.Count-1; i > 0; i--)
+            {
+                if (directions[i]=="Left")
+                {
+                    result[k] = "Right on ";
+                }
+                else
+                {
+                    result[k] = "Left on ";
+                }
+                k++;
+            }
+
+            int j = directions.Count-1;
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] += places[j];
+                j--;
+            }
+            
+
+            return result;
+        }
+    }
+}
