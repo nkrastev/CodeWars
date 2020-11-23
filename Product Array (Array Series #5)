@@ -1,0 +1,33 @@
+using System;
+
+namespace ProductArray
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] input = new int[] { 1, 5, 2 };
+            
+            Console.WriteLine(String.Join(" ", ProductArray(input)));
+            //result has to be 10, 2, 5
+        }
+
+        public static int[] ProductArray(int[] array)
+        {
+            int[] result = new int[array.Length];
+            for (int i = 0; i < result.Length; i++)
+            {
+                int temp = 1;
+                for (int j = 0; j < array.Length; j++)
+                {
+                    if (j!=i)
+                    {
+                        temp *= array[j];
+                    }
+                }
+                result[i] = temp;
+            }
+            return result;        
+        }
+    }
+}
