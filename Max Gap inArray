@@ -1,0 +1,30 @@
+using System;
+
+namespace Maximum_Gap
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] input = new int[] { 13, 10, 2, 9, 5 };
+            //ExpectedResult=4
+            Console.WriteLine(MaxGap(input));
+        }
+
+        public static int MaxGap(int[] numbers)
+        {
+            int maxGap = 0;
+            Array.Sort(numbers);
+            //Console.WriteLine(String.Join(" ",numbers));
+            for (int i = 0; i < numbers.Length-1; i++)
+            {
+                int tempDifference = Math.Abs(numbers[i] - numbers[i + 1]);
+                if (maxGap<tempDifference)
+                {
+                    maxGap = tempDifference;
+                }
+            }
+            return maxGap;
+        }
+    }
+}
