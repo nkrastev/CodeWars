@@ -1,0 +1,31 @@
+using System;
+
+namespace Form_The_Largest
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine(MaxNumber(3627));
+        }
+
+        public static int MaxNumber(int n)
+        {
+            string numbers = n.ToString();
+            int[] digits = new int[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                digits[i] = numbers[i] - '0';
+            }
+            Array.Sort(digits);
+            Array.Reverse(digits);
+            
+            string orderedNumber = "";
+            for (int i = 0; i < digits.Length; i++)
+            {
+                orderedNumber += digits[i];
+            }
+            return int.Parse(orderedNumber);
+        }
+    }
+}
