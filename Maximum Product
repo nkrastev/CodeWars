@@ -1,0 +1,27 @@
+using System;
+
+namespace Maximum_Product
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] input = new int[] { 40, 5, 8 };
+            Console.WriteLine(AdjacentElementsProduct(input));
+        }
+
+        public static int AdjacentElementsProduct(int[] array)
+        {
+            int result = int.MinValue;
+            for (int i = 0; i < array.Length-1; i++)
+            {
+                int tempResult = array[i] * array[i + 1];
+                if (tempResult>result)
+                {
+                    result = tempResult;
+                }
+            }
+            return result;
+        }
+    }
+}
