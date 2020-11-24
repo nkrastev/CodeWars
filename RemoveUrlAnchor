@@ -1,0 +1,36 @@
+//No special need of regex, It can be done just with strings
+
+using System;
+using System.Text.RegularExpressions;
+
+namespace Remove_anchor_from_URL
+{
+    class Program
+    {
+        static void Main()
+        {
+            //REGEX KATA
+            Console.WriteLine(RemoveUrlAnchor("www.codewars.com/test/#about"));
+        }
+
+        public static string RemoveUrlAnchor(string url)
+        {
+            string result = string.Empty;
+            if (url.Contains("#"))
+            {
+                Regex regex = new Regex(@"(.*)#");
+                MatchCollection matches = regex.Matches(url);
+
+                foreach (Match item in matches)
+                {
+                    result = item.Groups[1].Value;
+                }
+            }
+            else
+            {
+                result = url;
+            }      
+            return result;
+        }
+    }
+}
