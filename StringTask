@@ -1,0 +1,30 @@
+using System;
+using System.Linq;
+
+namespace StringTask
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine(StringTask("Codewars"));
+            
+        }
+
+        public static string StringTask(string input)
+        {
+            input = input.ToLower();
+            string vowels = "aeiouy";
+            input = new string(input.Where(c => !vowels.Contains(c)).ToArray());
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i%2==0)
+                {
+                    input = input.Insert(i, ".");
+                }
+            }
+
+            return input;
+        }
+    }
+}
