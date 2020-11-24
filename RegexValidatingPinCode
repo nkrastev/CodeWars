@@ -1,0 +1,39 @@
+// with no regex :)
+using System;
+
+namespace Regex_validate_PIN_code
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ATM machines allow 4 or 6 digit PIN codes and PIN codes 
+            //cannot contain anything but exactly 4 digits or exactly 6 digits.
+            Console.WriteLine(ValidatePin("123a"));
+
+        }
+
+        public static bool ValidatePin(string pin)
+        {
+            bool isValid = false;
+            if (pin.Length==4 || pin.Length==6)
+            {
+                isValid = true;
+                for (int i = 0; i < pin.Length; i++)
+                {
+                    if (!Char.IsDigit(pin[i]))
+                    {
+                        isValid = false;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    }
+}
