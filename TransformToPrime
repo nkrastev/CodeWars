@@ -1,0 +1,55 @@
+using System;
+using System.Linq;
+
+namespace TransformToPrime
+{
+    class Program
+    {
+        static void Main()
+        {
+            //Given a List[] of n integers, 
+            //find minimum number to be inserted in a list, 
+            //so that sum of all elements of list should equal the closest prime number.
+            int[] numbers = new int[] { 50, 39, 49, 6, 17, 28 };
+            Console.WriteLine(MinimumNumber(numbers));
+        }
+
+        public static int MinimumNumber(int[] numbers)
+        {
+            var result = int.MaxValue;
+
+            //sum of array
+            int arraySum = numbers.Sum();
+
+            if (IsPrime(arraySum))
+            {
+                result = 0;
+            }
+            else
+            {
+                while (!IsPrime(arraySum))
+                {
+                    arraySum++;
+                }
+                result = arraySum- numbers.Sum();
+            }           
+
+            return result;
+        }
+
+        public static bool IsPrime(int number)
+        {
+            if (number <= 1) return false;
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+
+            var boundary = (int)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 3; i <= boundary; i += 2)
+                if (number % i == 0)
+                    return false;
+
+            return true;
+        }
+    }
+}
