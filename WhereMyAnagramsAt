@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace WhereMyAnagramsAt
+{
+    class Program
+    {
+        static void Main()
+        {
+            //Write a function that will find all the anagrams of a word from a list.
+            //You will be given two inputs a word and an array with words.
+            //You should return an array of all the anagrams or an empty array if there are none.
+            var word = "racer";
+            List<string> inputList= new List<string> { "crazer", "carer", "racar", "caers", "racer" };
+            
+            Console.WriteLine(String.Join(" / ", Anagrams(word, inputList)));
+        }
+
+        public static List<string> Anagrams(string word, List<string> words)
+        {
+            //remove bigger or smaller words
+            int lettersCount = word.Length;
+            for (int i = 0; i < words.Count; i++)
+            {
+                if (words[i].Length!= lettersCount)
+                {
+                    words.RemoveAt(i);
+                    i--;
+                }
+            }            
+            //check for anagram each element
+            for (int i = 0; i < words.Count; i++)
+            {
+                List<char> currentElement = words[i].ToList();
+                bool isAnagram = word.All(ch => currentElement.Remove(ch));                 
+                if (!isAnagram )
+                {                  
+                    words.RemoveAt(i);
+                    i--;
+                }                
+            }            
+            return words;
+        }
+    }
+}
