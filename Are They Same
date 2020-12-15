@@ -1,0 +1,58 @@
+// some condition is missing
+using System;
+
+namespace AreTheySame
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] a = new int[] { 2, 2, 3 };
+            int[] b = new int[] { 4, 9, 9 };
+            bool r = comp(a, b); // True
+            Console.WriteLine(r);
+
+        }
+
+        public static bool comp(int[] a, int[] b)
+        {
+            bool isSame = true;
+
+            if (a.Length>0 && b.Length>0 && a.Length==b.Length)
+            {
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (Array.Exists(b, x => x == a[i] * a[i]))
+                    {
+                        isSame = true;
+                    }
+                    else
+                    {
+                        isSame = false;
+                        break;
+                    }
+                }
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (Array.Exists(a, x => x == Math.Sqrt(b[i])))
+                    {
+                        isSame = true;
+                    }
+                    else
+                    {
+                        isSame = false;
+                        break;
+                    }
+                }
+
+            }
+            else
+            {
+                isSame = false;
+            }
+            
+
+            return isSame;
+        }
+    }
+}
