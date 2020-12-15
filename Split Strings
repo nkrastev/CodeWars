@@ -1,0 +1,30 @@
+using System;
+
+namespace SplitString
+{
+    class Program
+    {
+        static void Main()
+        {
+            var input = "abcd";
+            Console.WriteLine(String.Join("\n", Solution(input)));
+        }
+
+        public static string[] Solution(string str)
+        {            
+            if (str.Length % 2!=0)
+            {
+                str = str + '_';
+            }
+            string[] result = new string[str.Length / 2];
+            int j = 0;
+            for (int i = 0; i < str.Length/2; i++)
+            {
+                result[i] = str[j].ToString()+str[j+1].ToString();
+                j += 2;
+            }
+
+            return result;
+        }
+    }
+}
