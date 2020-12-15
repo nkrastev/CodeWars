@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+namespace Find_the_middle_element
+{
+    class Program
+    {
+        static void Main()
+        {
+            double[] input = new double[3] { 17,22,39};
+
+            Console.WriteLine(Gimme(input));
+        }
+
+        public static int Gimme(double[] arr)
+        {            
+            int indexOfMiddle = -1;
+
+            if (
+                arr[0]>arr[1] && arr[0]<arr[2]
+                ||
+                arr[0]<arr[1] && arr[0]>arr[2]
+                )
+            {
+                indexOfMiddle = 0;
+            }
+
+            if (
+                (arr[1] > arr[0] && arr[1] < arr[2])
+                ||
+                (arr[1] < arr[0] && arr[1] > arr[2])
+                )
+            {
+                indexOfMiddle = 1;
+            }
+
+            if (
+                (arr[2] > arr[0] && arr[2] < arr[1])
+                ||
+                (arr[2] < arr[0] && arr[2] > arr[1])
+                )
+            {
+                indexOfMiddle = 2;
+            }
+
+            return indexOfMiddle;
+        }
+    }
+}
